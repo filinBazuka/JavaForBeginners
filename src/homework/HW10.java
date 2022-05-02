@@ -22,8 +22,8 @@ public class HW10 {
 
     public static void main(String[] args) {
 
-        // System.out.println(Metod.stroka1("    QA4Everyone   "));
+        System.out.println(Metod.stroka1("    QA4Everyone   "));
         System.out.println(Metod.stroka1("QA4Everyone"));
-        // System.out.println(Metod.stroka1(""));
+        System.out.println(Metod.stroka1(""));
     }
 }
