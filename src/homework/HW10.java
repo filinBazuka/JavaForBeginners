@@ -1,5 +1,6 @@
 package homework;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 public class HW10 {
@@ -92,7 +93,7 @@ public class HW10 {
             a = a.trim();              // метод "trim()" обрезает пробелы в начале и в конце строки
             String b = "\"";
             String c = "\".";
-            a = b.concat(a).concat(c); // Метод "b.concat(a)" присоединяет к строке "b" строка "а"
+            a = b.concat(a).concat(c); // Метод "b.concat(a)" присоединяет к строке "b" строку "а"
             // "b.concat(a).concat(c)" - к строке "b" присоединяем строку "а"
             // и потом строку "с"
 
@@ -103,13 +104,88 @@ public class HW10 {
 
         public static String correctSpelling8(String a) {
             String b = a.trim().toLowerCase(); // "trim()" - отсекаем пробелы в начале и конце
-                                               // "toLowerCase()" - делаем все буквы маленькими
+            // "toLowerCase()" - делаем все буквы маленькими
             String capital = b.substring(0, 1); // "substring(0, 1)" - отделяем первую букву
             String word = b.substring(1);       // "substring(1)" - отделяем ВСЁ кроми первой буквы
             capital = capital.toUpperCase();
             a = capital.concat(word);           // Присоединяем к первой букве всё остальное слово
 
             return a;
+        }
+
+        // 9
+
+        public static String returningAStringBetweenParameters9(String word, String letter) {
+            int first = word.indexOf(letter); // Методом "indexOf(letter)" находим индекс где первый раз встречаем "letter"
+            int last = word.lastIndexOf(letter); // Методом "lastIndexOf(letter)" находим индекс где последний раз встречаем "letter"
+            word = word.substring(first, last + 1); // "substring(first, last)" - записываем ВСЁ что находится между первым и последним индексом
+
+            return word;
+        }
+
+        // 10
+
+        public static boolean firstAndLastLettersAreTheSame10(String a) {
+            a = a.trim(); // Обрезаем пробелы в начале и в конце слова, на тот случай если слово придёт с пробелами
+            a = a.toLowerCase(); // Делаем все буквы маленькими
+            String first = a.substring(0, 1); // Записываем первую букву
+            String last = a.substring(a.length() - 1); // Записывем последнюю букву
+            if (first.equals(last)) { // Сравниваем первую букву с последней
+
+                return true;
+            }
+
+            return false;
+        }
+
+        // 11
+
+        public static String[] arrayOfWords11(String a) {
+            String[] words = a.split(" "); // Разделяем строку по пробелам "a.split(" ")" и записываем
+            // в массив слова из строки "а"
+            return words;
+        }
+
+        // 12
+
+        public static String[] fullNameArray12(String a) {
+            String[] fullNameS = a.split(" ");
+            String name = "Имя: ";
+            String patronymic = "Отчество: ";
+            String surname = "Фамилия: ";
+            String[] fullName = {name.concat(fullNameS[0]), patronymic.concat(fullNameS[1]),
+                    surname.concat(fullNameS[2])};
+
+            return fullName;
+        }
+
+        // 13
+
+        public static int sumOfAllLetters13(String a) {
+            int sum = 0;
+            for (int i = 0; i < a.length(); i++) {
+                if (a.charAt(i) > 64 && a.charAt(i) < 91) {
+                    sum += a.charAt(i);
+                }
+                if (a.charAt(i) > 96 && a.charAt(i) < 123) {
+                    sum += a.charAt(i);
+                }
+            }
+
+            return sum;
+        }
+
+        // 14
+
+        public static boolean whoWillMeetFirstInTheAlphabet14(String a, String b) {
+            a = a.toLowerCase();
+            b = b.toLowerCase();
+            if (a.charAt(0) < b.charAt(0)) {
+
+                return true;
+            }
+
+            return false;
         }
     }
 
@@ -183,6 +259,41 @@ public class HW10 {
         System.out.println(Metod.correctSpelling8("ЧикаГО"));
 
         // 9
+
+        System.out.println("9) ");
+        System.out.println(Metod.returningAStringBetweenParameters9("Abracadabra", "b"));
+        System.out.println(Metod.returningAStringBetweenParameters9("Whippersnapper", "p"));
+
+
+        // 10
+
+        System.out.println("10) ");
+        System.out.println(Metod.firstAndLastLettersAreTheSame10("Abracadabra"));
+        System.out.println(Metod.firstAndLastLettersAreTheSame10("Whippersnapper"));
+
+        // 11
+
+        System.out.println("11) ");
+        System.out.println(Arrays.toString(Metod.arrayOfWords11("QA for Everyone"))); // "Arrays.toString()" - выводим массив
+        System.out.println(Arrays.toString(Metod.arrayOfWords11("Александр Сергеевич Пушкин")));
+
+        // 12
+
+        System.out.println("12) ");
+        System.out.println(Arrays.toString(Metod.fullNameArray12("Александр Сергеевич Пушкин")));
+
+        // 13
+
+        System.out.println("13) ");
+        System.out.println(Metod.sumOfAllLetters13("abc"));
+        System.out.println(Metod.sumOfAllLetters13("ABC"));
+        System.out.println(Metod.sumOfAllLetters13("123"));
+
+        // 14
+
+        System.out.println("14) ");
+        System.out.println(Metod.whoWillMeetFirstInTheAlphabet14("a", "m"));
+        System.out.println(Metod.whoWillMeetFirstInTheAlphabet14("m", "l"));
 
     }
 }
